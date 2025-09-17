@@ -1,0 +1,8 @@
+Error: Failed to connect to database
+Warning: Disk space low
+Info: User logged in
+GET /api/data
+Error: Timeout occurred
+Warning: High memory usage
+GET /api/user
+GET /api/data
