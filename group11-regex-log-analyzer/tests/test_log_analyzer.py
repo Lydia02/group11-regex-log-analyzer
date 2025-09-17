@@ -14,6 +14,7 @@ def test_log_entry_extraction():
     assert entry.warning is False
     assert entry.endpoint == "/api/data"
     assert entry.ip_address == "192.168.1.1"
+    
 
 def test_log_analyzer_counts(tmp_path):
     log_content = [
