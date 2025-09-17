@@ -23,13 +23,9 @@ jobs:
       run: pip install pipenv
 
     - name: Install dependencies
-      run: pipenv install --dev
-      working-directory: group11-regex-log-analyzer
-
-    - name: Verify pytest installation
-      run: pipenv run python -m pytest --version
+      run: pipenv sync --dev
       working-directory: group11-regex-log-analyzer
 
     - name: Run tests
-      run: pipenv run python -m pytest
+      run: pipenv run pytest
       working-directory: group11-regex-log-analyzer
