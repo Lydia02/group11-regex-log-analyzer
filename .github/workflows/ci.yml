@@ -14,6 +14,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Change to project directory
+      run: cd group11-regex-log-analyzer
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
