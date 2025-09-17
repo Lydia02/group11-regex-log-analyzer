@@ -17,13 +17,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.13'
+        python-version: '3.10'
 
     - name: Install pipenv
       run: pip install pipenv
 
     - name: Install dependencies
-      run: pipenv install --dev --skip-lock
+      run: pipenv install --dev
 
     - name: List installed packages
       run: pipenv run pip list
