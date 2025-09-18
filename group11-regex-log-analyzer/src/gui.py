@@ -2,13 +2,23 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from log_analyzer import LogAnalyzer
 
+
 def analyze_log(filepath, pattern, top_n):
     analyzer = LogAnalyzer(filepath)
     try:
-        analyzer.apply_regex(pattern)
-        errors, warnings = analyzer.count_errors_warnings()
-        top_eps = analyzer.top_endpoints(top_n)
-        top_ips = analyzer.top_ips(top_n)
+        # Apply regex filter and get filtered entries
+        filtered_entries = analyzer.apply_regex(pattern)
+
+        temp_analyzer = LogAnalyzer.__new__(LogAnalyzer)
+        temp_analyzer.entries = filtered_entries
+
+        # Count errors/warnings from filtered entries only
+        errors, warnings = temp_analyzer.count_errors_warnings()
+
+        # Get top endpoints and IPs from filtered entries only
+        top_eps = temp_analyzer.top_endpoints(top_n)
+        top_ips = temp_analyzer.top_ips(top_n)
+
         result = f"Errors: {errors}, Warnings: {warnings}\n\nTop Endpoints:\n"
         for ep, count in top_eps:
             result += f"{ep}: {count}\n"
@@ -19,29 +29,35 @@ def analyze_log(filepath, pattern, top_n):
     except Exception as e:
         return str(e)
 
+
 def open_file():
     filepath = filedialog.askopenfilename()
     if filepath:
         log_file_var.set(filepath)
+
 
 def run_analysis():
     filepath = log_file_var.get()
     pattern = pattern_var.get()
     top_n = int(top_n_var.get())
     if not filepath or not pattern:
-        messagebox.showerror("Error", "Please select a log file and enter a regex pattern.")
+        messagebox.showerror(
+            "Error", "Please select a log file and enter a regex pattern."
+        )
         return
     result = analyze_log(filepath, pattern, top_n)
     result_text.delete(1.0, tk.END)
     result_text.insert(tk.END, result)
 
+
 def export_results():
     result = result_text.get(1.0, tk.END)
     filepath = filedialog.asksaveasfilename(defaultextension=".txt")
     if filepath:
-        with open(filepath, "w", encoding='utf-8') as f:
+        with open(filepath, "w", encoding="utf-8") as f:
             f.write(result)
         messagebox.showinfo("Export", "Results exported successfully!")
+
 
 root = tk.Tk()
 root.title("Regex Log Analyzer")
@@ -61,7 +77,9 @@ tk.Label(root, text="Top N:").grid(row=2, column=0, sticky="e")
 tk.OptionMenu(root, top_n_var, "3", "5", "10").grid(row=2, column=1, sticky="w")
 
 tk.Button(root, text="Analyze", command=run_analysis).grid(row=2, column=2, pady=10)
-tk.Button(root, text="Export Results", command=export_results).grid(row=3, column=2, pady=10)
+tk.Button(root, text="Export Results", command=export_results).grid(
+    row=3, column=2, pady=10
+)
 
 result_text = tk.Text(root, width=60, height=20)
 result_text.grid(row=4, column=0, columnspan=3)

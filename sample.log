@@ -1,14 +1,14 @@
 2023-09-16 13:05:00 Error: Failed to connect to database from 192.168.1.10
 2023-09-16 13:06:00 Warning: Disk space low on server01
 2023-09-16 13:07:00 Info: User john logged in
-2023-09-16 13:08:00 GET /api/data 200 OK
+2023-09-16 13:08:00 GET /api/data 200 OK from 192.168.1.10
 2023-09-16 13:09:00 Error: Timeout occurred [user: admin]
 2023-09-16 13:10:00 Warning: High memory usage
 2023-09-16 13:11:00 GET /api/user 404 Not Found from 10.0.0.12
-2023-09-16 13:12:00 POST /api/upload 201 Created
-2023-09-16 13:13:00 GET /api/data 200 OK
+2023-09-16 13:12:00 POST /api/upload 201 Created from 172.16.5.4
+2023-09-16 13:13:00 GET /api/data 200 OK from 192.168.1.15
 MalformedLineWithoutExpectedFormat
-2023-09-16 13:14:00 Error: Could not write to file /tmp/data.csv
+2023-09-16 13:14:00 Error: Could not write to file /tmp/data.csv from 203.0.113.45
 2023-09-16 13:15:00 GET /api/data 500 Internal Server Error from 172.16.5.4
 2023-09-16 13:16:00 GET /api/auth 200 OK from 192.168.1.15
 2023-09-16 13:17:00 GET /api/user 200 OK from 10.0.0.12
@@ -17,26 +17,41 @@ MalformedLineWithoutExpectedFormat
 2023-09-16 13:20:00 Warning: CPU usage at 85%
 2023-09-16 13:21:00 GET /api/orders 200 OK from 172.16.5.4
 2023-09-16 13:22:00 GET /api/data 304 Not Modified from 192.168.1.15
-2023-09-16 13:23:00 Error: Failed to process payment
+2023-09-16 13:23:00 Error: Failed to process payment from 198.51.100.30
 2023-09-16 13:24:00 GET /api/search 200 OK from 203.0.113.45
 2023-09-16 13:25:00 GET /api/user 200 OK from 10.0.0.25
 2023-09-16 13:26:00 Warning: Network latency high
 2023-09-16 13:27:00 GET /api/auth 401 Unauthorized from 198.51.100.30
 2023-09-16 13:28:00 GET /api/products 200 OK from 172.16.5.4
-2023-09-16 13:29:00 Error: File system full
-2023-09-16 13:30:00 GET /api/orders 503 Service Unavailable
+2023-09-16 13:29:00 Error: File system full from 10.0.0.50
+2023-09-16 13:30:00 GET /api/orders 503 Service Unavailable from 192.168.1.20
 2023-09-16 13:31:00 GET /api/data 200 OK from 192.168.1.10
 2023-09-16 13:32:00 Warning: Memory leak detected
 2023-09-16 13:33:00 GET /api/analytics 200 OK from 203.0.113.45
 2023-09-16 13:34:00 GET /api/user 500 Internal Server Error from 10.0.0.25
-2023-09-16 13:35:00 Error: Cache miss for key user:1234
+2023-09-16 13:35:00 Error: Cache miss for key user:1234 from 172.16.5.10
 2023-09-16 13:36:00 GET /api/reports 200 OK from 198.51.100.30
 2023-09-16 13:37:00 GET /api/search 429 Too Many Requests from 203.0.113.45
 2023-09-16 13:38:00 Warning: SSL certificate expires in 7 days
 2023-09-16 13:39:00 GET /api/dashboard 200 OK from 172.16.5.4
-2023-09-16 13:40:00 Error: Redis connection failed
+2023-09-16 13:40:00 Error: Redis connection failed from 192.168.1.25
 2023-09-16 13:41:00 GET /api/settings 200 OK from 192.168.1.15
 2023-09-16 13:42:00 GET /api/products 200 OK from 10.0.0.50
 2023-09-16 13:43:00 Warning: Backup process taking longer than expected
 2023-09-16 13:44:00 GET /api/data 200 OK from 198.51.100.30
-2023-09-16 13:45:00 Error: Unable to send email notification
+2023-09-16 13:45:00 Error: Unable to send email notification from 203.0.113.50
+2023-09-16 13:46:00 GET /api/notifications 200 OK from 192.168.1.30
+2023-09-16 13:47:00 GET /api/profile 200 OK from 10.0.0.75
+2023-09-16 13:48:00 Error: Payment gateway timeout from 172.16.5.20
+2023-09-16 13:49:00 GET /api/transactions 200 OK from 203.0.113.100
+2023-09-16 13:50:00 Warning: Rate limit approaching for API key from 198.51.100.45
+2023-09-16 13:51:00 GET /api/metrics 200 OK from 192.168.1.35
+2023-09-16 13:52:00 GET /api/config 200 OK from 10.0.0.80
+2023-09-16 13:53:00 Error: Session expired from 172.16.5.25
+2023-09-16 13:54:00 GET /api/health 200 OK from 203.0.113.75
+2023-09-16 13:55:00 GET /api/status 200 OK from 198.51.100.50
+2023-09-16 13:56:00 Warning: Database pool exhausted from 192.168.1.40
+2023-09-16 13:57:00 GET /api/logs 200 OK from 10.0.0.85
+2023-09-16 13:58:00 Error: Disk I/O error from 172.16.5.30
+2023-09-16 13:59:00 GET /api/backup 200 OK from 203.0.113.80
+2023-09-16 14:00:00 GET /api/restore 200 OK from 198.51.100.55

@@ -2,39 +2,57 @@ import re
 from collections import Counter
 from log_entry import LogEntry
 
-class LogAnalyzer:
-    def __init__(self, filepath):
-        self.entries = []
-        self.load_log_file(filepath)
 
-    def load_log_file(self, filepath):
+class LogAnalyzer:
+    def __init__(self, log_file):
+        self.log_file = log_file
+        self.entries = []
+        self.load_log()
+
+    def load_log(self):
+        """Load and parse log entries from file"""
         try:
-            with open(filepath, 'r', encoding='utf-8') as f:
+            with open(self.log_file, "r", encoding="utf-8") as f:
                 for line in f:
-                    try:
-                        entry = LogEntry(line.strip())
-                        self.entries.append(entry)
-                    except Exception as e:
-                        print(f"Malformed line skipped: {line.strip()} ({e})")
+                    line = line.strip()
+                    if line:  # Skip empty lines
+                        try:
+                            entry = LogEntry(line)
+                            self.entries.append(entry)
+                        except Exception:
+                            # Skip malformed lines
+                            continue
         except FileNotFoundError:
-            print(f"File not found: {filepath}")
+            raise FileNotFoundError(f"Log file not found: {self.log_file}")
+
+    def apply_regex(self, pattern):
+        """Filter log entries based on regex pattern"""
+        try:
+            regex = re.compile(pattern, re.IGNORECASE)
+        except re.error as e:
+            raise ValueError(f"Invalid regex pattern: {e}")
+
+        filtered_entries = []
+        for entry in self.entries:
+            if regex.search(entry.raw_line):
+                filtered_entries.append(entry)
+
+        return filtered_entries
 
     def count_errors_warnings(self):
+        """Count errors and warnings in loaded entries"""
         errors = sum(1 for entry in self.entries if entry.error)
         warnings = sum(1 for entry in self.entries if entry.warning)
         return errors, warnings
 
-    def top_endpoints(self, top_n=5):
+    def top_endpoints(self, n=5):
+        """Get top N endpoints by frequency"""
         endpoints = [entry.endpoint for entry in self.entries if entry.endpoint]
-        return Counter(endpoints).most_common(top_n)
+        counter = Counter(endpoints)
+        return counter.most_common(n)
 
-    def top_ips(self, top_n=5):
+    def top_ips(self, n=5):
+        """Get top N IP addresses by frequency"""
         ips = [entry.ip_address for entry in self.entries if entry.ip_address]
-        return Counter(ips).most_common(top_n)
-
-    def apply_regex(self, pattern):
-        try:
-            regex = re.compile(pattern)
-        except re.error as e:
-            raise ValueError(f"Invalid regex: {e}")
-        return [entry for entry in self.entries if regex.search(entry.raw_line)]
+        counter = Counter(ips)
+        return counter.most_common(n)
