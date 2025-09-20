@@ -1,6 +1,5 @@
 import re
 
-
 class LogEntry:
     def __init__(self, raw_line):
         self.raw_line = raw_line
@@ -16,3 +15,25 @@ class LogEntry:
     def extract_ip(self):
         match = re.search(r"(\d{1,3}(?:\.\d{1,3}){3})", self.raw_line)
         return match.group(1) if match else None
+
+    def is_error(self):
+        return self.error
+
+    def is_warning(self):
+        return self.warning
+
+    def __str__(self):
+        return (
+            f"Raw: {self.raw_line}\n"
+            f"Error: {self.error}, Warning: {self.warning}\n"
+            f"Endpoint: {self.endpoint}, IP: {self.ip_address}\n"
+        )
+
+    def export(self):
+        return {
+            "raw_line": self.raw_line,
+            "error": self.error,
+            "warning": self.warning,
+            "endpoint": self.endpoint,
+            "ip_address": self.ip_address,
+        }

@@ -1,6 +1,33 @@
 import argparse
 from log_analyzer import LogAnalyzer
 
+class LogAnalyzerCLI:
+    def __init__(self, logfile, pattern, endpoint_pattern):
+        self.analyzer = LogAnalyzer(logfile)
+        self.pattern = pattern
+        self.endpoint_pattern = endpoint_pattern
+
+    def run(self):
+        try:
+            filtered_entries = self.analyzer.apply_regex(self.pattern)
+            temp_analyzer = LogAnalyzer.__new__(LogAnalyzer)
+            temp_analyzer.entries = filtered_entries
+
+            errors, warnings = temp_analyzer.count_errors_warnings()
+            print(f"Errors: {errors}, Warnings: {warnings}")
+
+            top_eps = temp_analyzer.top_endpoints()
+            print("Top Endpoints:")
+            for ep, count in top_eps:
+                print(f"{ep}: {count}")
+
+            top_ips = temp_analyzer.top_ips()
+            print("Top IP Addresses:")
+            for ip, count in top_ips:
+                print(f"{ip}: {count}")
+
+        except ValueError as ve:
+            print(ve)
 
 def main():
     parser = argparse.ArgumentParser(description="Regex-Based Log Analyzer")
@@ -13,32 +40,8 @@ def main():
     )
     args = parser.parse_args()
 
-    analyzer = LogAnalyzer(args.logfile)
-    try:
-        # Apply regex filter
-        filtered_entries = analyzer.apply_regex(args.pattern)
-
-        # Create a temporary analyzer with only filtered entries
-        temp_analyzer = LogAnalyzer.__new__(LogAnalyzer)
-        temp_analyzer.entries = filtered_entries
-
-        # Count errors/warnings from filtered entries only
-        errors, warnings = temp_analyzer.count_errors_warnings()
-        print(f"Errors: {errors}, Warnings: {warnings}")
-
-        # Get top endpoints from filtered entries only
-        top_eps = temp_analyzer.top_endpoints()
-        print("Top Endpoints:")
-        for ep, count in top_eps:
-            print(f"{ep}: {count}")
-        top_ips = temp_analyzer.top_ips()
-        print("Top IP Addresses:")
-        for ip, count in top_ips:
-            print(f"{ip}: {count}")
-
-    except ValueError as ve:
-        print(ve)
-
+    cli = LogAnalyzerCLI(args.logfile, args.pattern, args.endpoint_pattern)
+    cli.run()
 
 if __name__ == "__main__":
     main()
