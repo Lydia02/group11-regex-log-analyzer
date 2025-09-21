@@ -123,7 +123,7 @@ The commit history in this repository reflects each member’s contributions in 
 
 ---
 
-## 🖼️ Screenshots
+<img width="947" height="268" alt="image" src="https://github.com/user-attachments/assets/de30ff1c-4441-4fe3-8bb0-7228642739b7" />
 
 1. **GUI Main Window**
    - Select log file, enter regex, choose Top N, analyze and export results.
