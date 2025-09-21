@@ -1,11 +1,10 @@
-# Regex-Based Log Analyzer (Group 11)
 
 A Python-based log analysis tool with both CLI and Tkinter GUI.
 It allows users to ingest server/application logs, filter entries using regex, and extract insights such as error/warning counts, top endpoints, and top IP addresses.
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 ### 1. Install Python
 This project requires Python 3.13.
@@ -41,7 +40,7 @@ pipenv shell
 
 ---
 
-## ▶️ Running the Application
+## Running the Application
 
 ### Run the CLI
 ```bash
@@ -61,7 +60,7 @@ python src/gui.py
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 Tests are located in the `tests/` folder.
 
@@ -78,10 +77,12 @@ Run a specific test file:
 pytest tests/test_core.py
 ```
 
+
 ---
 
-## 📂 Project Structure
+## Project Structure
 
+```
 group11-regex-log-analyzer/
 │── src/
 │    ├── cli.py               # CLI entry point
@@ -96,10 +97,10 @@ group11-regex-log-analyzer/
 │── sample.log                # Example log file
 │── Pipfile                   # Dependency management
 │── README.md                 # Project documentation
-
+```
 ---
 
-## 👥 Roles & Contributions
+## Roles & Contributions
 
 - Lydia02 [Team Lead, Docs, Presenter] – Coordination, documentation, demo video, codebase integration
 - [Other team members] – Core logic, GUI, CLI, regex filtering, testing
@@ -108,13 +109,14 @@ The commit history in this repository reflects each member’s contributions in 
 
 ---
 
-## 🎥 Demo Video
+## Demo Video
 
 [Video Link](https://drive.google.com/file/d/1TrGF6V11kVkxg1gSw6mR4GmM5a0_0y6H/view?usp=sharing)
 
 ---
 
-## 📸 Screenshots
+## <img width="1303" height="739" alt="image" src="https://github.com/user-attachments/assets/698bd403-f3b0-4c31-b7e5-3101889a5c9d" />
+
 
 1. **GUI Main Window**
    - Select log file, enter regex, choose Top N, analyze and export results.
