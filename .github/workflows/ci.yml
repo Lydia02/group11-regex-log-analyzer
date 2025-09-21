@@ -24,12 +24,12 @@ jobs:
 
     - name: Install dependencies
       run: pipenv install --dev
-      working-directory: group11-regex-log-analyzer
+      working-directory: group11
 
     - name: Debug - Check installed packages
       run: pipenv run pip list | grep pytest
-      working-directory: group11-regex-log-analyzer
+      working-directory: group11
 
     - name: Run tests with Python module
       run: pipenv run python -m pytest tests/ -v
-      working-directory: group11-regex-log-analyzer
+      working-directory: group11
