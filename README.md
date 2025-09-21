@@ -1,26 +1,26 @@
+# Regex-Based Log Analyzer (Group 11)
 
-A Python-based log analysis tool with both CLI and Tkinter GUI.
+A Python-based log analysis tool with both CLI and Tkinter GUI.  
 It allows users to ingest server/application logs, filter entries using regex, and extract insights such as error/warning counts, top endpoints, and top IP addresses.
 
 ---
 
-## Setup Instructions
+## 🚀 Quick Start
 
 ### 1. Install Python
-This project requires Python 3.13.
+- This project requires **Python 3.13**.
+- Download from [python.org](https://www.python.org/downloads/) if needed.
 
-If you already have Python 3.13, you’re good to go.
-If you have Python 3.12 or earlier, install Python 3.13 from [python.org](https://www.python.org/downloads/).
-
-**Verify your Python version:**
+**Check your Python version:**
 ```bash
 python --version
 ```
 
-### 2. Clone the repository
+### 2. Clone the Repository
+Open your terminal and run:
 ```bash
 git clone https://github.com/Lydia02/group11-regex-log-analyzer.git
-cd group11
+cd group11-regex-log-analyzer
 ```
 
 ### 3. Install Pipenv (if not already installed)
@@ -28,31 +28,40 @@ cd group11
 pip install pipenv
 ```
 
-### 4. Install dependencies
+### 4. Install Dependencies
 ```bash
 pipenv install --dev
 ```
 
-### 5. Activate the virtual environment
+### 5. Activate the Virtual Environment
 ```bash
 pipenv shell
 ```
 
 ---
 
-## Running the Application
+## 🖥️ How to Run
 
 ### Run the CLI
+From the project root, run:
 ```bash
-python src/cli.py ../sample.log "Error|Warning"
+python group11/src/cli.py sample.log "Error|Warning"
 ```
-- Replace `"Error|Warning"` with any regex pattern you want to filter log lines.
+- `sample.log` is your log file (provided in the project root).
+- `"Error|Warning"` is a sample regex pattern. You can use any regex pattern you want.
+
+**Common patterns:**
+- `"Error"` — Only error lines
+- `"Warning"` — Only warning lines
+- `"GET"` — Only GET requests
 
 ### Run the GUI
+From the project root, run:
 ```bash
-python src/gui.py
+python group11/src/gui.py
 ```
-- Select your log file.
+**In the GUI:**
+- Click **Browse** to select your log file (e.g., `sample.log`).
 - Enter a regex pattern.
 - Choose Top N (3, 5, or 10).
 - Click **Analyze** to view results.
@@ -60,7 +69,7 @@ python src/gui.py
 
 ---
 
-## Running Tests
+## 🧪 Running Tests
 
 Tests are located in the `tests/` folder.
 
@@ -77,19 +86,19 @@ Run a specific test file:
 pytest tests/test_core.py
 ```
 
-
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 group11-regex-log-analyzer/
-│── src/
-│    ├── cli.py               # CLI entry point
-│    ├── gui.py               # Tkinter GUI entry point
-│    ├── log_analyzer.py      # Core log analysis logic
-│    ├── log_entry.py         # Log entry parsing logic
-│    └── __init__.py
+│── group11/
+│    └── src/
+│         ├── cli.py               # CLI entry point
+│         ├── gui.py               # Tkinter GUI entry point
+│         ├── log_analyzer.py      # Core log analysis logic
+│         ├── log_entry.py         # Log entry parsing logic
+│         └── __init__.py
 │── tests/
 │    ├── test_core.py         # Core logic tests
 │    ├── test_log_analyzer.py # LogAnalyzer tests
@@ -98,25 +107,25 @@ group11-regex-log-analyzer/
 │── Pipfile                   # Dependency management
 │── README.md                 # Project documentation
 ```
+
 ---
 
-## Roles & Contributions
+## 👥 Roles & Contributions
 
-- Lydia02 [Team Lead, Docs, Presenter] – Coordination, documentation, demo video, codebase integration
-- [Other team members] – Core logic, GUI, CLI, regex filtering, testing
+- **Lydia02** [Team Lead, Docs, Presenter] – Coordination, documentation, demo video, codebase integration
+- **Other team members** – Core logic, GUI, CLI, regex filtering, testing
 
 The commit history in this repository reflects each member’s contributions in line with the roles above.
 
 ---
 
-## Demo Video
+## 🎥 Demo Video
 
-[Video Link](https://drive.google.com/file/d/1TrGF6V11kVkxg1gSw6mR4GmM5a0_0y6H/view?usp=sharing)
+[Watch the Demo](https://drive.google.com/file/d/1TrGF6V11kVkxg1gSw6mR4GmM5a0_0y6H/view?usp=sharing)
 
 ---
 
-## <img width="1303" height="739" alt="image" src="https://github.com/user-attachments/assets/698bd403-f3b0-4c31-b7e5-3101889a5c9d" />
-
+## 🖼️ Screenshots
 
 1. **GUI Main Window**
    - Select log file, enter regex, choose Top N, analyze and export results.
@@ -126,6 +135,24 @@ The commit history in this repository reflects each member’s contributions in 
 
 ---
 
-## License
+## ❓ Troubleshooting
+
+- **FileNotFoundError:**  
+  Make sure you run the CLI from the project root and use the correct path to your log file.
+  Example:
+  ```bash
+  python group11/src/cli.py sample.log "Error|Warning"
+  ```
+- **No output or unexpected results:**  
+  Check your regex pattern and ensure your log file contains matching lines.
+
+---
+
+## 📄 License
 
 MIT
+
+---
+
+**Need help?**  
+Open an issue on GitHub or contact the team lead.
