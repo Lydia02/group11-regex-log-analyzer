@@ -21,7 +21,7 @@ python --version
 ### 2. Clone the repository
 ```bash
 git clone https://github.com/Lydia02/group11-regex-log-analyzer.git
-cd group11-regex-log-analyzer/group11-regex-log-analyzer
+cd group11
 ```
 
 ### 3. Install Pipenv (if not already installed)
@@ -45,7 +45,7 @@ pipenv shell
 
 ### Run the CLI
 ```bash
-python src/cli.py sample.log "Error|Warning"
+python src/cli.py ../sample.log "Error|Warning"
 ```
 - Replace `"Error|Warning"` with any regex pattern you want to filter log lines.
 
