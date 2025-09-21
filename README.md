@@ -45,7 +45,7 @@ pipenv shell
 ### Run the CLI
 From the project root, run:
 ```bash
-python group11/src/cli.py sample.log "Error|Warning"
+python src/cli.py ../sample.log "Error|Warning"
 ```
 - `sample.log` is your log file (provided in the project root).
 - `"Error|Warning"` is a sample regex pattern. You can use any regex pattern you want.
