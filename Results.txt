@@ -1,0 +1,11 @@
+Errors: 3, Warnings: 9
+
+Top Endpoints:
+/api/data: 1
+/api/user: 1
+
+Top IP Addresses:
+172.16.5.4: 1
+10.0.0.25: 1
+198.51.100.45: 1
+
