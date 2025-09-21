@@ -1,4 +1,3 @@
-
 # Regex-Based Log Analyzer
 
 ## Overview
@@ -11,29 +10,41 @@ A Python tool to ingest server or application logs and extract insights (e.g., e
 - CLI and GUI interfaces
 - Export results from GUI
 
-## Usage
+## Step-by-Step Usage
 
-### CLI
+### 1. Install Dependencies
+```bash
+pip install pytest
+```
+
+### 2. Prepare Your Log File
+Place your log file (e.g., `sample.log`) in the project directory.
+
+### 3. Run the CLI
 ```bash
 python src/cli.py sample.log "Error|Warning"
 ```
+- Replace `"Error|Warning"` with any regex pattern you want to filter log lines.
 
-### GUI
+### 4. Run the GUI
 ```bash
 python src/gui.py
 ```
-Select your log file, enter a regex pattern, choose Top N, and click Analyze.
+- Select your log file.
+- Enter a regex pattern.
+- Choose Top N (3, 5, or 10).
+- Click **Analyze** to view results.
+- Click **Export Results** to save output.
 
-## Testing
-
-Run all tests:
+### 5. Run Tests
 ```bash
 pytest
 ```
+- This will run all tests in the `tests` folder to verify core logic.
 
 ## Example Pytest Tests
 
-See `tests/test_core_logic.py` for core logic tests.
+See `tests/test_core.py` and `tests/test_log_analyzer.py` for core logic tests.
 
 ## Requirements
 - Python 3.13+
