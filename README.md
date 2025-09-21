@@ -71,8 +71,6 @@ python group11/src/gui.py
 
 ## 🧪 Running Tests
 
-Tests are located in the `tests/` folder.
-
 Run all tests:
 ```bash
 pytest
