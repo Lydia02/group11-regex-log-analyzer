@@ -20,7 +20,7 @@ python --version
 Open your terminal and run:
 ```bash
 git clone https://github.com/Lydia02/group11-regex-log-analyzer.git
-cd group11-regex-log-analyzer
+cd group11-regex-log-analyzer/group11
 ```
 
 ### 3. Install Pipenv (if not already installed)
@@ -58,7 +58,7 @@ python src/cli.py ../sample.log "Error|Warning"
 ### Run the GUI
 From the project root, run:
 ```bash
-python group11/src/gui.py
+python src/gui.py
 ```
 **In the GUI:**
 - Click **Browse** to select your log file (e.g., `sample.log`).
